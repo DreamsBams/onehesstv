@@ -20,7 +20,25 @@ const client = new Client({
 client.on("ready", () => console.log("Bot is online"))
 
 
-server.listen(process.env.NODE_PORT || 5000)
+
+
+
+
+
+const host = 'localhost';
+const port = 3000;
+
+const host = '0.0.0.0';
+const port = process.env.PORT || 3000;
+
+app.listen(port, host, function() {
+    console.log("Server started.......");
+  });
+
+
+
+
+
 
 
 client.login(process.env.TOKEN)
