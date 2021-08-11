@@ -4,6 +4,8 @@ const intents = new Discord.Intents(32767)
 
 const { Client, Intents } = require('discord.js')
 
+const http = require('http')
+
 const client = new Client({ 
     intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES, Intents.FLAGS.GUILD_MEMBERS, Intents.FLAGS.GUILD_EMOJIS_AND_STICKERS, Intents.FLAGS.GUILD_MESSAGE_REACTIONS, Intents.FLAGS.DIRECT_MESSAGE_REACTIONS]
     ,partials: ['MESSAGE', 'REACTION', 'CHANNEL', 'GUILD_MEMBER', 'USER']
@@ -24,15 +26,29 @@ client.on("ready", () => console.log("Bot is online"))
   
 
 
+
+
+const requestListener = function (req, res) {
+    res.writeHead(200);
+    res.end('Hello, World!');
+  }
+  
+  const server = http.createServer(requestListener)
+
+
 //const host = 'localhost';
 //const port = 3000;
 
 const host = '0.0.0.0';
 const port = process.env.PORT || 3000;
 
-client.listen(port, host, function() {
+server.listen(port, host, function() {
     console.log("Server started.......");
   });
+
+
+    
+
 
 
 
