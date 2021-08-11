@@ -20,6 +20,7 @@ const client = new Client({
 client.on("ready", () => console.log("Bot is online"))
 
 client.login(process.env.TOKEN)
+client.listen(process.env.PORT || 5000)
 client.commands = new Discord.Collection()
 client.db = require('./db.json')
 
